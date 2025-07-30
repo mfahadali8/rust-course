@@ -2,8 +2,15 @@ use std::collections::{HashMap, HashSet, VecDeque};
 use std::fs::File;
 use std::io;
 use std::io::{BufRead, Write};
+use std::env;
 
 fn main() {
+    let args : Vec<String> = env::args().collect();
+    if args.len() > 1 {
+        println!("Usage: {} [action]", args[0]);
+        println!("Available actions: loop, while, panic, dfs, bfs, readfile");
+        return;
+    }
     let mut what_you_want_to_run: String = String::new();
     let actions: Vec<&str> = vec!["loop", "while", "panic", "dfs", "bfs", "readfile"];
     println!("Available actions: {:?}", actions);
